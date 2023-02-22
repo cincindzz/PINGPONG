@@ -45,24 +45,48 @@ public class ball_initial : MonoBehaviour
         float y_transform = Mathf.Sin(angle) * speed * Time.deltaTime;
         float x_transform = Mathf.Cos(angle) * speed * Time.deltaTime;
         // Debug.Log("Update");
-        //Debug.Log(System.String.Format("Angle: {0}", angle));
-        //Debug.Log(System.String.Format("transform: {0},{1}", x_transform, y_transform));
-        //Debug.Log(System.String.Format("FROM: {0},{1}",position.x, position.y));
+        Debug.Log(System.String.Format("Angle: {0}", angle));
+        Debug.Log(System.String.Format("transform: {0},{1}", x_transform, y_transform));
+        Debug.Log(System.String.Format("FROM: {0},{1}",position.x, position.y));
         position = new Vector2(position.x + x_transform, position.y + y_transform);
-        //Debug.Log(System.String.Format("To: {0},{1}", position.x, position.y));
+        Debug.Log(System.String.Format("To: {0},{1}", position.x, position.y));
         transform.position = position;
 
         //hit wall reflect
         // ball hitting the wall from right
         if (transform.position.x <= screenLeft)
         {
-            angle *= -1;
+            if (angle <= 1)
+            {
+                angle = 1 - angle;
+            }
+            if (angle > 1)
+            {
+                angle = 1 + angle;
+            }
         }
         // ball hitting the wall from left
         // need to turn into scoring
         // could use code for collision between ball and paddle
-        //if (transform.position.x >= screenRight)
-        //{
-        /
+        if (transform.position.x >= screenRight)
+        {
+            if (angle > 1)
+            {
+                angle = 3 - angle;
+            }
+            if (angle <= 1)
+            {
+                angle = 1 - angle;
+            }
+        }
+
+        if (transform.position.y >= screenUp)
+        {
+            angle = 2 + angle;
+        }
+        if (transform.position.y <= screenDown)
+        {
+            angle = 2 - angle;
+        }
     }
 }
