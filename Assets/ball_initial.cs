@@ -46,23 +46,23 @@ public class ball_initial : MonoBehaviour
         float x_transform = Mathf.Cos(angle) * speed * Time.deltaTime;
         // Debug.Log("Update");
         Debug.Log(System.String.Format("Angle: {0}", angle));
-        Debug.Log(System.String.Format("transform: {0},{1}", x_transform, y_transform));
-        Debug.Log(System.String.Format("FROM: {0},{1}",position.x, position.y));
+        //Debug.Log(System.String.Format("transform: {0},{1}", x_transform, y_transform));
+        //Debug.Log(System.String.Format("FROM: {0},{1}",position.x, position.y));
         position = new Vector2(position.x + x_transform, position.y + y_transform);
-        Debug.Log(System.String.Format("To: {0},{1}", position.x, position.y));
+        //Debug.Log(System.String.Format("To: {0},{1}", position.x, position.y));
         transform.position = position;
 
         //hit wall reflect
         // ball hitting the wall from right
         if (transform.position.x <= screenLeft)
         {
-            if (angle <= 1)
+            if (angle <= 1f * Mathf.PI)
             {
-                angle = 1 - angle;
+                angle = 1f * Mathf.PI - angle;
             }
-            if (angle > 1)
+            if (angle > 1f * Mathf.PI)
             {
-                angle = 1 + angle;
+                angle = 3f * Mathf.PI - angle;
             }
         }
         // ball hitting the wall from left
@@ -70,23 +70,33 @@ public class ball_initial : MonoBehaviour
         // could use code for collision between ball and paddle
         if (transform.position.x >= screenRight)
         {
-            if (angle > 1)
+            if (angle > 1f * Mathf.PI)
             {
-                angle = 3 - angle;
+                angle = 3f * Mathf.PI - angle;
             }
-            if (angle <= 1)
+            if (angle <= 1f * Mathf.PI)
             {
-                angle = 1 - angle;
+                angle = 1f * Mathf.PI - angle;
             }
         }
 
+        // from below
         if (transform.position.y >= screenUp)
         {
-            angle = 2 + angle;
+            if (angle <= 0.5f * Mathf.PI)
+            {
+                angle *= -1;
+            }
+            else
+            {
+                angle = 2f * Mathf.PI - angle;
+            }
         }
+
+        // from above
         if (transform.position.y <= screenDown)
         {
-            angle = 2 - angle;
+            angle = 2f * Mathf.PI - angle;
         }
     }
 }
