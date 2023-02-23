@@ -6,10 +6,8 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ball_initial : MonoBehaviour
 {
-    public float speed = 1.0f;
+    public float speed = 5.0f;
     //define min and max positions for the object
-    public float minX = -10;
-    public float maxX = 10;
     // float conversions
     public float minY = (float)-4.5;
     public float maxY = (float)4.5;
@@ -28,12 +26,12 @@ public class ball_initial : MonoBehaviour
         //Debug.Log("Start");
         //random spawn position
         angle = Random.Range(0f, 2f * Mathf.PI);
-        Vector2 randomPos = new Vector2(0, Random.Range(minY, maxY));
-        position = randomPos;
         screenLeft = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x;
         screenRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x;
         screenUp = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y;
         screenDown = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y;
+        Vector2 randomPos = new Vector2(0, Random.Range(minY, maxY));
+        position = randomPos;
 
     }
 
