@@ -28,9 +28,10 @@ public class p1score : MonoBehaviour
 
         if (Timer > 0)
         {
-            if (transform.position.x >= ball_initial.screenRight)
+            if (ball_Initial.position.x >= ball_initial.screenRight)
             {
                 p1_score++;
+                Debug.Log(System.String.Format("{0}",p1_score));
             }
 
 
