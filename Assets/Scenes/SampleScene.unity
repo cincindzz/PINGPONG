@@ -431,10 +431,6 @@ MonoBehaviour:
   maxY: 4.5
   angle: 0
   position: {x: 0, y: 0}
-  screenLeft: 0
-  screenRight: 0
-  screenUp: 0
-  screenDown: 0
 --- !u!50 &712632558
 Rigidbody2D:
   serializedVersion: 4
@@ -918,6 +914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 712632556}
+  timeleft: {fileID: 1989724977}
+  p1scoreTxt: {fileID: 1804992303}
 --- !u!114 &1804992303
 MonoBehaviour:
   m_ObjectHideFlags: 0

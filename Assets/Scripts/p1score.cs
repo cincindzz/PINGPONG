@@ -17,16 +17,18 @@ public class p1score : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        ball_Initial = ball.GetComponent<ball_initial>();
-        Timer = timeleft.GetComponent<timer>();
+        float ball_Initial = ball.GetComponent<ball_initial>().position.x;
+        float Timer = timeleft.GetComponent<timer>().TimeLeft;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer.TimeLeft > 0)
+        float Timer = timeleft.GetComponent<timer>().TimeLeft;
+
+        if (Timer > 0)
         {
-            if (ball_initial.position.x >= ball_initial.screenRight)
+            if (transform.position.x >= ball_initial.screenRight)
             {
                 p1_score++;
             }
@@ -37,6 +39,6 @@ public class p1score : MonoBehaviour
 
     void updatescore(int score)
     {
-        p1scoreTxt.text = string.Format("{00}", score);
+        p1scoreTxt.text = string.Format("{0}", score);
     }
 }

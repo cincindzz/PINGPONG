@@ -52,34 +52,34 @@ public class ball_initial : MonoBehaviour
         //Debug.Log(System.String.Format("To: {0},{1}", position.x, position.y));
         transform.position = position;
 
-// transformations when hitting the wall
-        ////hit wall reflect
-        //// ball hitting the wall from right
-        //if (transform.position.x <= screenLeft)
-        //{
-        //    if (angle <= 1f * Mathf.PI)
-        //    {
-        //        angle = 1f * Mathf.PI - angle;
-        //    }
-        //    if (angle > 1f * Mathf.PI)
-        //    {
-        //        angle = 3f * Mathf.PI - angle;
-        //    }
-        //}
-        //// ball hitting the wall from left
-        //// need to turn into scoring
-        //// could use code for collision between ball and paddle
-        //if (transform.position.x >= screenRight)
-        //{
-        //    if (angle > 1f * Mathf.PI)
-        //    {
-        //        angle = 3f * Mathf.PI - angle;
-        //    }
-        //    if (angle <= 1f * Mathf.PI)
-        //    {
-        //        angle = 1f * Mathf.PI - angle;
-        //    }
-        //}
+        // transformations when hitting the wall
+        //hit wall reflect
+        // ball hitting the wall from right
+        if (transform.position.x <= screenLeft)
+        {
+            if (angle <= 1f * Mathf.PI)
+            {
+                angle = 1f * Mathf.PI - angle;
+            }
+            if (angle > 1f * Mathf.PI)
+            {
+                angle = 3f * Mathf.PI - angle;
+            }
+        }
+        // ball hitting the wall from left
+        // need to turn into scoring
+        // could use code for collision between ball and paddle
+        if (transform.position.x >= screenRight)
+        {
+            if (angle > 1f * Mathf.PI)
+            {
+                angle = 3f * Mathf.PI - angle;
+            }
+            if (angle <= 1f * Mathf.PI)
+            {
+                angle = 1f * Mathf.PI - angle;
+            }
+        }
 
         // from below
         if (transform.position.y >= screenUp)
