@@ -24,7 +24,7 @@ public class p1score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer.TimeLeft > 0)
+        if (timer.TimeLeft > 0)
         {
             if (ball_initial.position.x >= ball_initial.screenRight)
             {
