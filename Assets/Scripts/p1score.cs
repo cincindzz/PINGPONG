@@ -7,8 +7,8 @@ using TMPro;
 public class p1score : MonoBehaviour
 {
     // get data from other scripts
-    int p1_score = 0;
-    int p2_score = 0;
+    public int p1_score = 0;
+    public int p2_score = 0;
     ball_initial ball_Initial;
     [SerializeField] GameObject ball;
     timer Timer;
