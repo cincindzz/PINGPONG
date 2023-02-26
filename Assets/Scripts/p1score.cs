@@ -8,6 +8,7 @@ public class p1score : MonoBehaviour
 {
     // get data from other scripts
     int p1_score = 0;
+    int p2_score = 0;
     ball_initial ball_Initial;
     [SerializeField] GameObject ball;
     timer Timer;
@@ -17,13 +18,14 @@ public class p1score : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        float ball_Initial = ball.GetComponent<ball_initial>().position.x;
+        ball_Initial = ball.GetComponent<ball_initial>();
         float Timer = timeleft.GetComponent<timer>().TimeLeft;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("update");
         float Timer = timeleft.GetComponent<timer>().TimeLeft;
 
         if (Timer > 0)
@@ -31,15 +33,22 @@ public class p1score : MonoBehaviour
             if (ball_Initial.position.x >= ball_initial.screenRight)
             {
                 p1_score++;
+                updatescore(p1_score,p2_score);
                 Debug.Log(System.String.Format("{0}",p1_score));
             }
 
+            if (ball_Initial.position.x <= ball_initial.screenLeft)
+            {
+                p2_score++;
+                updatescore(p1_score, p2_score);
+
+            }
 
         }
     }
 
-    void updatescore(int score)
+    void updatescore(int p1_score, int p2_score)
     {
-        p1scoreTxt.text = string.Format("{0}", score);
+        p1scoreTxt.text = string.Format("{0}:{1}", p1_score, p2_score);
     }
 }
