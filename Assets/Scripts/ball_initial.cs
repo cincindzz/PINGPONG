@@ -9,6 +9,9 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class ball_initial : MonoBehaviour
 {
     public float speed = 5.0f;
+    public float extraSpeed;
+    public float maxSpeed;
+    private int HitCounter = 0;
     //define min and max positions for the object
     // float conversions
     public float minY = (float)-4.5;
@@ -20,6 +23,8 @@ public class ball_initial : MonoBehaviour
     public static float screenRight;
     public static float screenUp;
     public static float screenDown;
+    // rigidbody system
+    private Rigidbody2D rb;
 
 
     void Start()
@@ -35,6 +40,12 @@ public class ball_initial : MonoBehaviour
         Vector2 randomPos = new Vector2(0, Random.Range(minY, maxY));
         position = randomPos;
 
+        // setup ball collision
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.right * speed;
+
+        //
+        StartCoroutine(Launch());
     }
 
 
@@ -100,4 +111,46 @@ public class ball_initial : MonoBehaviour
             angle = 2f * Mathf.PI - angle;
         }
     }
+
+
+    public IEnumerator Launch()
+    {
+        HitCounter = 0;
+        yield return new WaitForSeconds(1);
+
+        MoveBall(new Vector2(-1, 0));
+    }
+
+
+    public void MoveBall(Vector2 direction)
+    {
+        direction = direction.normalized;
+
+        float ballSpeed = speed + HitCounter * extraSpeed;
+
+        rb.velocity = direction * ballSpeed;
+    }
+
+    public void IncreaseHitCounter()
+    {
+        if (HitCounter * extraSpeed < maxSpeed)
+        {
+            HitCounter++;
+        }
+    }
+
+    //private void OnCollisionEnter2D(Collision2D obj)
+    //{
+    //    if (obj.gameObject.tag == "RightPaddle")
+    //    {
+    //        float y = (transform.position.y - obj.transform.position.y) / obj.collider.bounds.size.y;
+    //        Vector2 dir = new Vector2(-1, y).normalized;
+    //        rb.velocity = dir * speed;
+    //    }
+    //    if (obj.gameObject.tag == "LeftPaddle")
+    //    {
+    //        float y = (transform.position.y - obj.transform.position.y) / obj.collider.bounds.size.y;
+    //        Vector2 dir = new Vector2(1, y).normalized;
+    //        rb.velocity = dir * speed;
+    //}
 }
