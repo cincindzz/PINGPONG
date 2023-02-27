@@ -32,7 +32,7 @@ public class ball_initial : MonoBehaviour
         screenRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x;
         screenUp = Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y;
         screenDown = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y;
-        Vector2 randomPos = new Vector2(0, Random.Range(minY, maxY));
+        Vector2 randomPos = new Vector2(0, 0);
         position = randomPos;
 
     }
@@ -45,7 +45,7 @@ public class ball_initial : MonoBehaviour
         float y_transform = Mathf.Sin(angle) * speed * Time.deltaTime;
         float x_transform = Mathf.Cos(angle) * speed * Time.deltaTime;
         // Debug.Log("Update");
-        Debug.Log(System.String.Format("Angle: {0}", angle));
+        //Debug.Log(System.String.Format("Angle: {0}", angle));
         //Debug.Log(System.String.Format("transform: {0},{1}", x_transform, y_transform));
         //Debug.Log(System.String.Format("FROM: {0},{1}",position.x, position.y));
         position = new Vector2(position.x + x_transform, position.y + y_transform);
@@ -65,6 +65,7 @@ public class ball_initial : MonoBehaviour
             {
                 angle = 3f * Mathf.PI - angle;
             }
+
         }
         // ball hitting the wall from left
         // need to turn into scoring
@@ -80,6 +81,15 @@ public class ball_initial : MonoBehaviour
                 angle = 1f * Mathf.PI - angle;
             }
         }
+
+
+        //if (transform.position.x <= screenLeft || transform.position.x >= screenRight)
+        //{
+        //    Debug.Log(System.String.Format("movement setting: {0},{1}", x_transform, y_transform));
+        //    Debug.Log(System.String.Format("1 position: {0},{1}", screenLeft, screenRight));
+
+        //    Start();
+        //}
 
         // from below
         if (transform.position.y >= screenUp)
