@@ -18,14 +18,14 @@ public class left_paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKey("w"))
-        //{
-        //    transform.Translate(Vector2.up * speed * Time.deltaTime);
-        //}
-        //if (Input.GetKey("s"))
-        //{
-        //    transform.Translate(Vector2.down * speed * Time.deltaTime);
-        //}
+        if (Input.GetKey("w"))
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
+        if (Input.GetKey("s"))
+        {
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+        }
         if (transform.position.y >= 4.18f)
         {
             transform.position = new Vector2(transform.position.x, 4.18f);
@@ -36,13 +36,13 @@ public class left_paddle : MonoBehaviour
         }
 
 
-        float directionY = Input.GetAxisRaw("LeftPaddle");
+        //float directionY = Input.GetAxisRaw("LeftPaddle");
 
-        racketDirection = new Vector2(0, directionY).normalized;
+        //racketDirection = new Vector2(0, directionY).normalized;
     }
 
-    private void FixedUpdate()
-    {
-        rb.velocity = racketDirection * speed;
-    }
+    //private void FixedUpdate()
+    //{
+    //    rb.velocity = racketDirection * speed;
+    //}
 }
