@@ -49,7 +49,7 @@ public class BoxCollider : MonoBehaviour
         // Hit the right Racket?
         if (col.gameObject.name == "RightPaddle")
         {
-            // Calculate $$anonymous$$t Factor
+            // Calculate hit Factor
             float y = hitFactor(transform.position,
                                 col.transform.position,
                                 col.collider.bounds.size.y);

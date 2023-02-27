@@ -12,20 +12,20 @@ public class right_paddle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKey("up"))
-        //{
-        //    transform.Translate(Vector2.up * speed * Time.deltaTime);
-        //}
-        //if (Input.GetKey("down"))
-        //{
-        //    transform.Translate(Vector2.down * speed * Time.deltaTime);
-        //}
+        if (Input.GetKey("up"))
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
+        if (Input.GetKey("down"))
+        {
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+        }
         if (transform.position.y >= 4.18f)
         {
             transform.position = new Vector2(transform.position.x, 4.18f);
@@ -36,13 +36,13 @@ public class right_paddle : MonoBehaviour
         }
 
 
-        float directionY = Input.GetAxisRaw("RightPaddle");
+        //float directionY = Input.GetAxisRaw("RightPaddle");
 
-        racketDirection = new Vector2(0, directionY).normalized;
+        //racketDirection = new Vector2(0, directionY).normalized;
     }
 
-    private void FixedUpdate()
-    {
-     rb.velocity = racketDirection * speed;
-    }
+    //private void FixedUpdate()
+    //{
+    // rb.velocity = racketDirection * speed;
+    //}
 }
