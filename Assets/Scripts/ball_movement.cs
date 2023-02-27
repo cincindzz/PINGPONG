@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class ball_movement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public ball_initial ballMovement;
 
     private void Bounce(Collision2D collision)
@@ -25,7 +13,7 @@ public class ball_movement : MonoBehaviour
         float racketHeight = collision.collider.bounds.size.y;
 
         float positionX;
-        if (collision.gameObject.name == "left paddle")
+        if(collision.gameObject.name == "LeftPaddle")
         {
             positionX = 1;
         }
@@ -42,7 +30,7 @@ public class ball_movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "left paddle" || collision.gameObject.name == "right paddle")
+        if (collision.gameObject.name == "LeftPaddle" || collision.gameObject.name == "RightPaddle")
         {
             Bounce(collision);
         }
