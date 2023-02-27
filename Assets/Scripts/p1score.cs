@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading;
 
 public class p1score : MonoBehaviour
 {
@@ -25,16 +26,21 @@ public class p1score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("update");
         float Timer = timeleft.GetComponent<timer>().TimeLeft;
+
+        Debug.Log("update");
 
         if (Timer > 0)
         {
             if (ball_Initial.position.x >= ball_initial.screenRight)
             {
+                Debug.Log(System.String.Format("2 position: {0}", ball_Initial.position.x));
+                Debug.Log(System.String.Format("screen: {0}", ball_initial.screenRight));
+
+
                 p1_score++;
                 updatescore(p1_score,p2_score);
-                Debug.Log(System.String.Format("{0}",p1_score));
+                //Debug.Log(System.String.Format("{0}",p1_score));
             }
 
             if (ball_Initial.position.x <= ball_initial.screenLeft)
